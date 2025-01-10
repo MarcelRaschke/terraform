@@ -1,5 +1,5 @@
 // Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: BUSL-1.1
 
 package configschema
 
@@ -36,7 +36,7 @@ func (b *Block) specType() cty.Type {
 }
 
 // ContainsSensitive returns true if any of the attributes of the receiving
-// block or any of its descendent blocks are marked as sensitive.
+// block or any of its descendant blocks are marked as sensitive.
 //
 // Blocks themselves cannot be sensitive as a whole -- sensitivity is a
 // per-attribute idea -- but sometimes we want to include a whole object
