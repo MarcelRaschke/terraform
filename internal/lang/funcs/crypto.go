@@ -1,5 +1,5 @@
 // Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: BUSL-1.1
 
 package funcs
 
@@ -12,6 +12,7 @@ import (
 	"encoding/asn1"
 	"encoding/base64"
 	"encoding/hex"
+	"errors"
 	"fmt"
 	"hash"
 	"io"
@@ -175,7 +176,7 @@ var RsaDecryptFunc = function.New(&function.Spec{
 			default:
 				errStr = fmt.Sprintf("invalid private key: %s", e)
 			}
-			return cty.UnknownVal(cty.String), function.NewArgErrorf(1, errStr)
+			return cty.UnknownVal(cty.String), function.NewArgError(1, errors.New(errStr))
 		}
 		privateKey, ok := rawKey.(*rsa.PrivateKey)
 		if !ok {
